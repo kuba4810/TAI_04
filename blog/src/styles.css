@@ -1,4 +1,143 @@
+/* You can add global styles to this file, and also import other style files */
 img{
-    width:500px;
+    width:100%;
     height:500px;
+}
+
+
+body{
+    background-color:grey !important;
+    margin:none;
+}
+a{
+    color:white !important;
+    text-decoration: none !important;
+}
+
+.menu{
+    width:100%;
+}
+
+ul.mainMenu li{
+    color:white;
+    text-align: center;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+ul.mainMenu li:hover{
+    text-shadow: 0 0 20px white;
+    
+}
+
+.navbar-brand{
+    transition: .2s ease;
+}
+.navbar-brand:hover{
+    text-shadow: 0px 0px 20px white;
+}
+
+/*
+  ul{
+    list-style-type: none;
+    display:block;
+
+}
+
+ .menu ul li{
+    float:left;
+    background-color: black;
+    color:white;
+    padding: 8px 16px;
+    font-size:15px;
+    transition: .2s ease;
+    cursor:pointer;
+}
+
+.menu ul li:hover{
+    background-color:#333333;
+}
+*/
+
+
+
+#data{
+    color:white;
+}
+
+.list-group-item:hover{
+    cursor:pointer;
+    background-color:gray;
+}
+
+.row{
+    margin:0;
+    padding:0;
+}
+
+.invisible{
+    display:none;
+}
+
+
+
+.textCenter{
+    text-align:center;
+}
+
+.starDiv{
+    display:flex;
+    align-items: center;
+}
+
+.stars{
+    display:flex;
+    flex-direction: row-reverse;
+}
+.starDiv i{
+    font-size:20px;
+    padding:5px;
+    cursor:pointer;
+
+}
+.starDiv i:hover, .starDiv i:hover ~ i {
+    color:gold;
+}
+
+.starDiv .starDivTitle{
+    font-size:30px;
+    /*background-color:black;*/
+    display:inline-block;
+    padding-right:10px;
+
+}
+
+.blogItemTitle{
+    text-align: center;
+    padding: 20px 0;
+    background-color:#ff9900;
+    width:100%;
+}
+.blogItemTitle h3 a:hover{
+    text-decoration: underline !important;
+}
+
+.imageHolder{
+    overflow: hidden;
+    width:100%;
+}
+.imageHolder img{
+    transition:.4s ease;
+}
+.imageHolder img:hover{
+    transform: scale(1.05,1.05);
+}
+
+.timeCounter , .progressCounter{
+    padding:15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:35px;
+
 }

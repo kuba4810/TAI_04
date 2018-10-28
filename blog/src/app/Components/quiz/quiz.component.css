@@ -1,3 +1,7 @@
+.quizContainer{
+    transition:.4s ease;
+}
+
 .historyData{
     background-color:cornsilk;
     color: black;
@@ -13,4 +17,18 @@
 .startQuiz{
     width:100%;
     margin: 5px 0px 5px 0px;
+}
+
+.textCenter{
+    text-align:center;
+}
+
+
+.loadingGif{
+    text-align:center;
+}
+.loadingGif img{
+    width:10%;
+    height:10%;
+    margin:auto;
 }

@@ -7,6 +7,7 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class BlogItemImageComponent implements OnInit {
   @Input() image: string;
+  @Input() id: string;
   constructor() { }
 
   ngOnInit() {

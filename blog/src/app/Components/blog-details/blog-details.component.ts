@@ -7,9 +7,17 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   styleUrls: ['./blog-details.component.css'],
   template : `
               <div> 
+              <div class="row"> 
                  <h2>{{post.text}}</h2>
-                 <img src={{post.image}} />
-                 <h3>{{post.content}} </h3>
+              </div>
+                 <div class="row"> 
+                   <div class="col-lg-4 col-md-6"> 
+                      <img src={{post.image}} /> 
+                   </div>   
+                 </div>  
+                 <div class="row">             
+                   <h3>{{post.content}} </h3>
+                   </div>
               </div>
              `
 })

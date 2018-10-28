@@ -5,7 +5,7 @@ import { Component, OnInit ,Input} from '@angular/core';
   templateUrl: './app-blog-item.component.html',
   template: ` 
                <blog-item-text [title]="title" [id]="id"></blog-item-text>
-               <blog-item-image [image]="image"> </blog-item-image>
+               <blog-item-image [image]="image" [id]="id"> </blog-item-image>
             `,
   styleUrls: ['./app-blog-item.component.css']
 })

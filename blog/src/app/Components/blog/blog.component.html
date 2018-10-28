@@ -1,5 +1,8 @@
 <ul class="list-group">
     <li *ngFor="let post of posts">
-         <blog-item id="{{post.id}}" title={{post.text}}  image={{post.image}} ></blog-item>
+        <div class="col-lg-4 col-md-6">
+            <blog-item id="{{post.id}}" title={{post.text}}  image={{post.image}} ></blog-item>
+        </div> 
+       
     </li>
 </ul>

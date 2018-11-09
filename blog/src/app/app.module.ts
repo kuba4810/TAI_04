@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './Components/contact/contact.component';
@@ -11,6 +13,10 @@ import { AppBlogItemComponent } from './Components/app-blog-item/app-blog-item.c
 import { BlogItemTextComponent } from './Components/blog-item-text/blog-item-text.component';
 import { BlogItemImageComponent } from './Components/blog-item-image/blog-item-image.component';
 import { BlogDetailsComponent } from './Components/blog-details/blog-details.component';
+import { NavigationComponent } from './Components/navigation/navigation.component';
+import {DataService} from './Services/data-service.service';
+import { FilterPostsComponent } from './Components/filter-posts/filter-posts.component'
+import {FilterPipe} from './pipes'
 
 
 const appRoutes: Routes = [
@@ -31,17 +37,22 @@ const appRoutes: Routes = [
     AppBlogItemComponent,
     BlogItemTextComponent,
     BlogItemImageComponent,
-    BlogDetailsComponent
+    BlogDetailsComponent,
+    NavigationComponent,
+    FilterPostsComponent,
+    FilterPipe
     
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

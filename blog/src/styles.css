@@ -141,3 +141,160 @@ ul.mainMenu li:hover{
     font-size:35px;
 
 }
+
+.blogItem{
+    animation-duration: 1s;
+}
+
+.animated {
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+
+  .fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+  }
+
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -10%, 0);
+      transform: translate3d(0, -10%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+  }
+
+
+  @keyframes rollIn {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -12deg);
+      transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -12deg);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .rollIn {
+    -webkit-animation-name: rollIn;
+    animation-name: rollIn;
+  }
+/* LOADING ANIMATION*/
+
+
+@keyframes spinRight {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinLeft {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.loaderContainer{
+    margin: 10% auto;
+    position:relative;
+    top:25%;
+    width:100px;
+    height:100px;
+    /*background-color: black;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader, .loaderInner , .loaderInnerSmall {
+    position: absolute;
+    border: 2px solid #262626;
+    border-radius: 50%;
+    border-top: 4px solid #ff9900;
+    border-bottom: 4px solid #ff9900;
+    width: 100px;
+    height: 100px;
+   
+}
+
+.loader{
+    -webkit-animation: spinRight 2s linear infinite;
+    animation: spinRight 1s linear infinite;
+}
+
+
+
+.loaderInner {
+    width: 70px;
+    height: 70px;
+    -webkit-animation: spinLeft 2s linear infinite;
+    animation: spinLeft 1s linear infinite;
+}
+
+.loaderInnerSmall{
+    width:40px;
+    height:40px;
+    -webkit-animation: spinRight 2s linear infinite;
+    animation: spinRight 1s linear infinite;
+}
+
+
+/*------------------------------------------------------------------*/
+
+.textCenter{
+    text-align:center;
+}
+.blogDetailText{
+    text-align: center;
+    /*border-left: 2px solid white;
+    border-right: 2px solid white;*/
+}
+
+.blogDetailsImg{
+    animation-duration: 1s;
+    animation-delay: .2s;
+}
+
+.detailTitle{
+    animation-duration: 1s;
+    color:#ff9900;
+}
+
+.detailContent{
+    animation-duration: 1s;
+    animation-delay: .4s;
+}

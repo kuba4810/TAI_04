@@ -1,40 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import {DataService} from '../../Services/data-service.service'
+import {FilterPipe} from '../../pipes'
 
 @Component({
   selector: 'blog-details',
-  templateUrl: './blog-details.component.html',
-  styleUrls: ['./blog-details.component.css'],
-  template : `
-              <div> 
-              <div class="row"> 
-                 <h2>{{post.text}}</h2>
-              </div>
-                 <div class="row"> 
-                   <div class="col-lg-4 col-md-6"> 
-                      <img src={{post.image}} /> 
-                   </div>   
-                 </div>  
-                 <div class="row">             
-                   <h3>{{post.content}} </h3>
-                   </div>
-              </div>
-             `
+  templateUrl: './blog-details.component.html'
+ 
 })
 export class BlogDetailsComponent implements OnInit {
 
   id
-  post: {
-        id:'',
-        image:'',
-        text:'',
-        content: ''
-      }
-  constructor(private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.paramMap.subscribe(params => {
+  post: any
+  constructor(private activatedRoute: ActivatedRoute,private dataService: DataService) {
+    activatedRoute.paramMap.subscribe(params => {
         this.id = params.get("id");
         console.log("Id: ",this.id);
-
+/*
         fetch("../../assets/posts.json")
         .then(response => response.json())
           .then(response => {
@@ -45,11 +27,15 @@ export class BlogDetailsComponent implements OnInit {
                 }
               });
              console.log(this.post);
-            });
+            });*/
+           
     });
    }
 
   ngOnInit() {
+    this.dataService.getPost(this.id).subscribe(result=>{
+      this.post = result;
+    });
   }
 
 }

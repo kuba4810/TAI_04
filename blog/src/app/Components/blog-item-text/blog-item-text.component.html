@@ -1,5 +1,5 @@
 <div class="blogItemTitle">
     <h3>
-        <a routerLink="/blog/details/{{id}}" routerLinkActive="active">{{title}}</a>
+        <a routerLink="/blog/details/{{id}}" routerLinkActive="active">{{title | slice: 0:30 }}...</a>
     </h3>     
 </div>

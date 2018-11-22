@@ -242,34 +242,40 @@ ul.mainMenu li:hover{
 
 .loader, .loaderInner , .loaderInnerSmall {
     position: absolute;
-    border: 2px solid #262626;
+    /*border: 2px solid #262626;*/
     border-radius: 50%;
-    border-top: 4px solid #ff9900;
-    border-bottom: 4px solid #ff9900;
+    
+    /*border-bottom: 4px solid #ff9900;*/
     width: 100px;
     height: 100px;
    
 }
 
 .loader{
+    border-top: 4px solid #cc7700;
     -webkit-animation: spinRight 2s linear infinite;
     animation: spinRight 1s linear infinite;
+    animation-delay:0.3s;
 }
 
 
 
 .loaderInner {
+    border-top: 4px solid #ee8800;
     width: 70px;
     height: 70px;
     -webkit-animation: spinLeft 2s linear infinite;
-    animation: spinLeft 1s linear infinite;
+    animation: spinRight 1s linear infinite;
+    animation-delay: 0.2s;
 }
 
 .loaderInnerSmall{
+    border-top: 4px solid #ff9900;
     width:40px;
     height:40px;
     -webkit-animation: spinRight 2s linear infinite;
     animation: spinRight 1s linear infinite;
+    animation-delay: 0.1s;
 }
 
 
@@ -297,4 +303,50 @@ ul.mainMenu li:hover{
 .detailContent{
     animation-duration: 1s;
     animation-delay: .4s;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #262626;
+    color: #fff !important;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 100%;
+    margin-left: -60px;
+    font-size:15px;
+    opacity: 0;   
+    transition:  .5s;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left:10%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.sendFormButton:hover + .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+form{
+    background-color: white;
+    padding: 10px;
+    border-radius:5px;
+    margin-top:10px;
+}
+
+
+.contactForm span{
+    color:red;
 }

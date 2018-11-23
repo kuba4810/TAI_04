@@ -990,14 +990,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
-        this.url = "https://jsonplaceholder.typicode.com";
+        this.url = "http://localhost:3000/api";
     }
     DataService.prototype.getAll = function () {
         console.log("Działa");
-        return this.http.get(this.url + '/photos');
+        return this.http.get(this.url + '/posts');
     };
     DataService.prototype.getPost = function (postId) {
-        return this.http.get(this.url + "/photos/" + postId);
+        return this.http.get(this.url + "/posts/" + postId);
     };
     DataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),

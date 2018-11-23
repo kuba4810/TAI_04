@@ -255,7 +255,7 @@ ul.mainMenu li:hover{
     border-top: 4px solid #cc7700;
     -webkit-animation: spinRight 2s linear infinite;
     animation: spinRight 1s linear infinite;
-    animation-delay:0.3s;
+    animation-delay:0.2s;
 }
 
 
@@ -266,7 +266,7 @@ ul.mainMenu li:hover{
     height: 70px;
     -webkit-animation: spinLeft 2s linear infinite;
     animation: spinRight 1s linear infinite;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 .loaderInnerSmall{
@@ -275,7 +275,7 @@ ul.mainMenu li:hover{
     height:40px;
     -webkit-animation: spinRight 2s linear infinite;
     animation: spinRight 1s linear infinite;
-    animation-delay: 0.1s;
+   
 }
 
 

@@ -1,0 +1,67 @@
+.registerForm{
+    background-color: rgba(255,255,255,0);
+    width: 30%;
+    margin: 100px auto 0 auto;
+}
+.registerForm label{
+    font-size: 20px;
+}
+.registerForm input,textarea{
+    position:realative;
+    background-color: rgba(255,255,255,0.5);
+    border:none;
+    border-bottom: 2px solid cornsilk;
+    box-shadow: none;
+    border-radius: 0px;
+    font-size: 17px;
+    color: #262626;
+    letter-spacing:1px;
+    
+}
+
+
+
+.registerForm input::placeholder, texteare::placeholder{
+    color:#262626;
+
+}
+
+.loginForm textarea{
+    background-color: rgba(255,255,255,0.5);
+
+}
+
+.registerForm input:focus,textarea:focus{
+    border-bottom: 2px solid #1873ce;
+    background-color: rgba(255,255,255,0.7);
+    
+}
+
+.registerForm button{
+    width:50%;
+    border-radius:0px;
+}
+.registerForm .button-group{
+    width:100%;
+}
+.registerForm .registerButton{
+    margin-top: 10px;
+    width:100% !important;
+    border-radius:0px;
+}
+
+.registerForm h2{
+    color: cornsilk;
+}
+
+@media only screen and (max-width: 1000px){
+    .registerForm{
+        width:50%;
+    }
+}
+
+@media only screen and (max-width: 600){
+    .registerForm{
+        width:100%;
+    }
+}

@@ -1,0 +1,67 @@
+.loginForm{
+    background-color: rgba(255,255,255,0);
+    width: 30%;
+    margin: 100px auto 0 auto;
+}
+.loginForm label{
+    font-size: 20px;
+}
+.loginForm input,textarea{
+    position:realative;
+    background-color: rgba(255,255,255,0.5);
+    border:none;
+    border-bottom: 2px solid cornsilk;
+    box-shadow: none;
+    border-radius: 0px;
+    font-size: 17px;
+    color: #262626;
+    letter-spacing:1px;
+    
+}
+
+
+
+.loginForm input::placeholder, texteare::placeholder{
+    color:#262626;
+
+}
+
+.loginFormr textarea{
+    background-color: rgba(255,255,255,0.5);
+
+}
+
+.loginForm input:focus,textarea:focus{
+    border-bottom: 2px solid #1873ce;
+    background-color: rgba(255,255,255,0.7);
+    
+}
+
+.loginForm button{
+    width:50%;
+    border-radius:0px;
+}
+.loginForm .button-group{
+    width:100%;
+}
+.loginForm .loginButton{
+    margin-top: 10px;
+    width:100% !important;
+    border-radius:0px;
+}
+
+.loginForm h2{
+    color: cornsilk;
+}
+
+@media only screen and (max-width: 1000px){
+    .loginForm{
+        width:50%;
+    }
+}
+
+@media only screen and (max-width: 600){
+    .loginForm{
+        width:100%;
+    }
+}

@@ -1,0 +1,50 @@
+.new-post-container h1{
+    color:cornsilk;
+}
+
+
+.new-post-form{
+    background-color: rgba(255,255,255,0);
+}
+.new-post-container label{
+    font-size: 20px;
+}
+.new-post-container input,textarea{
+    position:realative;
+    background-color: rgba(255,255,255,0.5);
+    border:none;
+    border-bottom: 2px solid cornsilk;
+    box-shadow: none;
+    border-radius: 0px;
+    font-size: 17px;
+    color: #262626;
+    letter-spacing:1px;
+    
+}
+
+
+
+.new-post-container input::placeholder, texteare::placeholder{
+    color:#262626;
+
+}
+
+.new-post-container textarea{
+    background-color: rgba(255,255,255,0.5);
+
+}
+
+.new-post-container input:focus,textarea:focus{
+    border-bottom: 2px solid #1873ce;
+    
+}
+
+.new-post-container button{
+    width:50%;
+    border-radius:0px;
+}
+
+label span{
+    color:red;
+    font-size: 15px;
+}

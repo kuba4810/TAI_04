@@ -1,2 +1,6 @@
-<label for="search">Wyszukaj posty: </label>
-<input  [(ngModel)]="filterText" textFormat (ngModelChange)="sendFilter($event)"  name="search" placeholder="Wpisz nazwę..."  />
+<form class="searchPostForm">
+   <div class="form-group">
+    <label for="search">Wyszukaj posty: </label> 
+    <input class="form-control"  [(ngModel)]="filterText" textFormat (ngModelChange)="sendFilter($event)"  name="search" placeholder="Wpisz nazwę..."  autocomplete="off"  />
+   </div>
+</form>

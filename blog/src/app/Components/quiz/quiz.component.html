@@ -11,11 +11,22 @@
   <div class="row quizHeader">
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
-      <button class="btn btn-success startQuiz " id="startQuiz">START</button>
+      <button class="btn btn-success startQuiz " id="startQuiz" (click)="this.startQuiz($event)">START</button>
+      <button class="btn btn-primary reloadQuiz" *ngIf="this.quizFinished" (click)="this.reloadQuiz()"> Jeszcze raz !</button>
     </div>
     <div class="col-lg-4"></div>
   </div>
 
+  <div class="row" *ngIf="this.quizStarted">
+   <div class="col-lg-2"></div>
+   <div class="col-lg-4 time">
+    Pozostało {{this.time}}s
+   </div>
+   <div class="col-lg-4 progressCounter">
+    Pytanie nr: {{this.progress}}
+   </div>
+   <div class="col-lg-2"></div>
+  </div>
 
 
   <div class="row">
@@ -36,31 +47,41 @@
     <div class="col-lg-12 panel">
 
       <div class="questionText textCenter">
-        <h2 id="questionText">Kliknij start by rozpocząć Quiz !</h2>
-      </div>
-      <div class="answers collapse" id="answers">
-        <ul class="list-group">
-          <li class="list-group-item" id="a"></li>
-          <li class="list-group-item" id="b"></li>
-          <li class="list-group-item" id="c"></li>
-          <li class="list-group-item" id="d"></li>
+        <h2 *ngIf="!this.quizStarted && !this.quizFinished" id="questionText">Kliknij start by rozpocząć Quiz !</h2>
+        <h2 *ngIf="this.quizStarted" id="questionText">{{this.questions[index].question}}</h2>
+        <h2 *ngIf="this.quizFinished"> Gratulacje, udało Ci się dotrzeć do końca quizu ! </h2>
+      </div> 
+      <div class="answers " id="answers">
+        <ul class="list-group" *ngIf="this.quizStarted">
+          <li (click)="this.answerClicked('a',$event)" class="list-group-item" id="a">{{this.questions[index].answers[0]}}</li>
+          <li (click)="this.answerClicked('b',$event)" class="list-group-item" id="b">{{this.questions[index].answers[1]}}</li>
+          <li (click)="this.answerClicked('c',$event)" class="list-group-item" id="c">{{this.questions[index].answers[2]}}</li>
+          <li (click)="this.answerClicked('d',$event)" class="list-group-item" id="d">{{this.questions[index].answers[3]}}</li>
         </ul>
       </div>
-      <div class="row result" id="result">
-        <div class="score" id="score">
 
-        </div>
-
-      </div>
     </div>
 
-  </div>
+    <div class="row result" id="result">
+       <!-- <div class="col-lg-3"></div> -->
+       <div class="col-lg-6" *ngIf="this.quizFinished">
+          <hr>
+          <div class="score" id="score">
+            Twój wynik to : {{this.score}}
+          </div>
+       </div>
+       <div class="col-lg-3"></div>
 
+      </div>
+
+  </div>
+  <button  *ngIf="this.showNexQuestionButton && this.quizStarted" (click)="this.nextQuestion()"class="btn btn-primary">Następne pytanie</button>
+  <button *ngIf="!this.showNexQuestionButton && this.quizStarted" (click)="this.finishQuiz()"class="btn btn-success finishQuiz">Zakończ quiz</button>
 
   <div class="row">
     <div class="col-lg-12">
 
-      <div id="scoreHistory" class="invisible">
+      <div id="scoreHistory" *ngIf="this.quizFinished">
         <div class="btn btn-primary" data-toggle="collapse" data-target="#history">
           Poprzednie wyniki
         </div>
@@ -73,6 +94,10 @@
               </tr>
             </thead>
             <tbody id="scoreTableBody">
+              <tr *ngFor="let historyItem of this.scoreHistory">
+                <td>{{historyItem.date}}</td>
+                <td>{{historyItem.score}}</td>
+              </tr>
             </tbody>
           </table>
         </div>

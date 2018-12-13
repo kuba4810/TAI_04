@@ -1,4 +1,18 @@
-<div>
-  <search-bar  (name)="getName($event)" ></search-bar>
-  <app-blog  [filterText]="filterText"></app-blog>
+
+<div class="container-fluid">  
+    <div class="row">
+        <div class="col-lg-4 col-md-5">
+          <search-bar  (name)="getName($event)" ></search-bar> 
+        </div>
+        <!-- <div class="col-lg-5"></div> -->
+        <div class="button-container col-lg-3 col-md-4">
+          <a routerLink="/blog/new-post"class="newPostButton" routerLinkActive="active"><div class="buttonText">Nowy Post</div> <i class="fas fa-angle-double-right"></i></a>
+        </div>
+       </div>
+</div>
+
+<hr>
+
+<div class="container-fluid">
+    <app-blog  [filterText]="filterText"></app-blog>
 </div>

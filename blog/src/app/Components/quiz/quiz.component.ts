@@ -8,185 +8,154 @@ import { Component, OnInit } from '@angular/core';
 export class QuizComponent implements OnInit {
 
     questions: []
-    questionCount: 0
-    time: 10
-    quizInterval
-    isQuizRunning
-    index: 0
-    isClicked
-
+    index=0
+    quizStarted=false
+    currentAnswer = ''
+    userAnswers = []
+    showNexQuestionButton = true
+    score=0
+    time = 10
+    progress = 1
+    timeCounter
+    quizFinished = false
+    scoreHistory
 
     constructor() {
-        this.questionCount = 0;
-        this.isQuizRunning = false;
-        this.isClicked = false;
+
     }
 
     ngOnInit() {
-
-        /*this.fetchQuestions();
-        var startQuiz = document.getElementById("startQuiz");
-        startQuiz.addEventListener('click', this.startQuiz);
-
-        var answers = document.querySelectorAll(".list-group-item");
-
-        var i = 0;
-        for (i; answers.length; i++) {
-            answers[i].addEventListener('click', this.choseAnswer);
-        }*/
-    }
-
-    fetchQuestions = () => {/*
-
         var quizContainer = document.getElementById("quizContainer");
-        var loadingGif = document.getElementById("loadingGif");
+        var loadingGif = document.querySelector(".loaderContainer");
 
         fetch('../../assets/questions.json')
             .then(response => response.json())
             .then(res => {
-                this.questions = res;
-                //console.log("Pobrane pytania: ",this.questions[0].question);
-
+                this.questions = res;             
                 quizContainer.classList.remove("invisible");
-                loadingGif.classList.add("invisible");
+                loadingGif.remove();             
 
-
-            });*/
-
-    }
-    startQuiz = () => {/*
-        var progressCounter = document.getElementById("progressCounter");
-        var timeCounter = document.getElementById("timeCounter");
-        var startQuiz = document.getElementById("startQuiz");
-
-        if (!this.isQuizRunning) {
-            this.isQuizRunning = true;
-            progressCounter.classList.remove("invisible");
-            timeCounter.classList.remove("invisible");
-            document.getElementById("answers").classList.remove("collapse");
-
-            document.querySelector(".questionText").classList.remove("textCenter");
-
-            document.querySelector(".quizHeader").classList.add("invisible");
-
-
-            startQuiz.classList.add("invisible");
-            //console.log(this.questions[this.questionCount]);
-
-            this.showQuestion();
-            this.quizInterval = this.startInterval();
-        }*/
+            });       
     }
 
-    showQuestion = () => {/*
-        var q = this.questions[this.questionCount]
-        console.log("Typ: ", typeof (this.questionCount))
-        console.log("Przesłane pytania: ", this.questions[this.questionCount]);
-        document.getElementById("questionText").innerHTML = q.question;
-
-        document.getElementById("a").innerHTML = q.answers[0];
-        document.getElementById("b").innerHTML = q.answers[1];
-        document.getElementById("c").innerHTML = q.answers[2];
-        document.getElementById("d").innerHTML = q.answers[3];*/
+    startQuiz(e){
+        e.target.classList.add("invisible");
+        this.quizStarted = true;
+        this.timeCounter = this.startCounting();
     }
 
-    startInterval = () => {/*
-        var progressCounter = document.getElementById("progressCounter");
-        var timeCounter = document.getElementById("timeCounter");
-        return (setInterval(() => {
-            console.log("Działa interwał");
-            if (this.time > 0) {
-                this.time = this.time - 1;
-                timeCounter.innerHTML = this.time + "s";
-                progressCounter.innerHTML = `Pytanie ${this.questionCount + 1} z 10`;
-            }
+    answerClicked(answer,event){
+       
+        var answers = document.querySelectorAll(".list-group-item");
+        answers.forEach( li=>{
+            li.classList.remove('answerClicked');
+        });
+        event.target.classList.add("answerClicked");
 
-            if (this.time <= 0) {
-                this.questionCount = this.questionCount + 1;
-                this.showQuestion();
-                this.time = 10;
-                progressCounter.innerHTML = this.questionCount + 1 + "/10";
-                timeCounter.innerHTML = 10
-            }
-        }, 1000))*/
+        this.currentAnswer = answer;
     }
 
-    choseAnswer = (e) => {/*
-        var progressCounter = document.getElementById("progressCounter");
-        var timeCounter = document.getElementById("timeCounter");
-
-        if (!this.isClicked) {
-            this.isClicked = true;
-
-            clearInterval(this.quizInterval);
-            var userAnswer = e.target.textContent;
-
-            if (userAnswer == this.questions[this.questionCount].correctAnswer) {
-                e.target.style.backgroundColor = "green";
-
-
-                var currentResult = parseInt(localStorage.getItem("result")) + 1;
-                localStorage.setItem("result", currentResult)
-
-
-            } else {
-                e.target.style.backgroundColor = "red";
-            }
-
-            if (this.questionCount < 9) {
-
-                clearInterval(this.quizInterval);
-                this.time = 11;
-                this.quizInterval = this.startInterval();
-
-
-                setTimeout(() => {
-                    this.showQuestion();
-                    this.questionCount = this.questionCount + 1;
-
-
-                    progressCounter.innerHTML = `Pytanie ${this.questionCount} z 10`;
-                    e.target.removeAttribute("style");
-
-                    this.isClicked = false;
-
-                }, 400);
-
-            } else {
-                this.time = 11;
-                this.isClicked = true;
-                setTimeout(function () {
-                    var summary = localStorage.getItem("result");
-                    document.querySelector(".score").innerHTML = "Udało Ci się ukończyć Quiz ! Twój wynik to : " + summary;
-                    e.target.removeAttribute("style");
-
-                    //resultHistory = JSON.parse(localStorage.getItem("resultHistory"));
-
-
-                    var date = new Date();
-
-                    /*resultHistory.unshift({
-                        date: date.getDate() + "." + date.getMonth() + "." + date.getFullYear() + "/ " +
-                            date.getHours() + ":" + (date.getMinutes() > 10 ? date.getMinutes() : "0" + date.getMinutes())+ ":" + (date.getSeconds() > 10 ? date.getSeconds() : "0" + date.getSeconds()),
-                        score: summary
-                    });
-
-                    localStorage.setItem("resultHistory", JSON.stringify(resultHistory));
-                    console.log(localStorage.getItem("resultHistory"));
-
-                    //document.querySelector(".questionText").classList.add("invisible");
-                    // document.querySelector(".answers").classList.add("invisible");
-
-                    //showScoreHistory();
-
-                    document.getElementById("scoreHistory").classList.remove("invisible");
-
-                }, 500);
-
-            }
-
-        }*/
+    nextQuestion(){          
+        if(this.index <9){
+            clearInterval(this.timeCounter);
+            var answers = document.querySelectorAll(".list-group-item");
+            answers.forEach( li=>{
+                li.classList.remove('answerClicked');
+            });          
+           if(this.currentAnswer === this.questions[this.index]["correctAnswer"]){
+               this.score++;
+           }
+           this.currentAnswer=''
+            this.index++;
+            this.progress++;
+            this.time = 10;
+            this.timeCounter = this.startCounting();
+        }
+            if(this.index == 9){
+                this.showNexQuestionButton = false;
+                // clearInterval(this.timeCounter);               
+                
+            }       
+       
     }
+
+    finishQuiz(){
+        
+        if( this.currentAnswer.length > 0 && this.currentAnswer === this.questions[this.index]["correctAnswer"]){
+            this.score++;
+        }
+        console.log(this.userAnswers);
+        console.log(`Twój wynik to ${this.score}`);
+
+        this.quizStarted = false;
+        this.quizFinished = true;
+        clearInterval(this.timeCounter);
+
+        var history;
+       
+      
+        if(typeof(localStorage.getItem("scoreHistory")) === 'undefined'){
+            history = [];
+            localStorage.setItem("scoreHistory",JSON.stringify(history));
+            this.scoreHistory = history;
+        }
+        else{
+            var currentDate = this.createCurrentData()
+            history = localStorage.getItem("scoreHistory");
+            console.log(history);
+            history = JSON.parse(history);
+            history.unshift({date: currentDate, score:this.score});
+        
+            localStorage.setItem("scoreHistory",JSON.stringify(history)); 
+          
+        }
+
+        this.scoreHistory = history;
+      
+
+    }
+
+    startCounting=()=>{
+        return(setInterval(()=>{
+           if(this.time > 0){
+               
+            this.time--;
+            
+           }
+           else{
+               clearInterval(this.timeCounter);
+              if(this.index <9){
+                this.nextQuestion();
+              }
+              else{
+                  this.finishQuiz();
+              }
+           }
+        },1000))
+    }
+
+    createCurrentData(){
+        let date = new Date()
+        let day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+        let month = date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()
+
+        let hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()
+        let minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes()
+
+        return `${day}-${month}-${date.getFullYear()} ${hour}:${minutes}`
+    }
+
+    reloadQuiz(){
+        this.time=10;
+        this.index=0;
+        this.progress=1;
+        this.quizStarted = true;
+        this.quizFinished = false;
+        this.showNexQuestionButton = true;
+        this.timeCounter = this.startCounting();
+        this.score=0;
+    }
+
 }
 
 

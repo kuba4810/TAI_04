@@ -1,0 +1,35 @@
+.newPostButton{
+    position:relative;
+    padding: 8px 16x;
+    display:flex;
+    align-items: center;
+    width:100%;
+    justify-content: center;
+}
+
+.newPostButton i{
+    position:absolute;
+    color: orangered !important;
+    right: -5px;
+    opacity:0;
+    transition:.4s ease;
+    font-size:25px;
+}
+.buttonText{
+    transition:.4s ease;
+}
+.newPostButton:hover .buttonText{
+    opacity:0;
+}
+
+.newPostButton:hover i{
+    opacity:1;
+    right:50%;
+    transform:translateX(50%);
+}
+
+@media only screen and (max-width: 1000px){
+    .button-container{
+        height:auto;
+    }
+}

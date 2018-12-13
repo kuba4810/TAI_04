@@ -18,6 +18,10 @@
     width:100%;
     margin: 5px 0px 5px 0px;
 }
+.reloadQuiz{
+    width:100%;
+    text-align: center;
+}
 
 .textCenter{
     text-align:center;
@@ -31,4 +35,19 @@
     width:10%;
     height:10%;
     margin:auto;
+}
+
+.answerClicked{
+    background-color: #262626;
+    color:cornsilk;
+}
+
+.time,.progressCounter{
+font-size: 20px;
+color: cornsilk;
+text-align:center;
+}
+
+.score{
+    font-size:20px;    
 }

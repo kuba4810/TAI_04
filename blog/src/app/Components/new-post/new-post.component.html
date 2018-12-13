@@ -1,0 +1,59 @@
+<div class="new-post-container animated fadeInDown">
+  
+<div class="row">
+    <div class="col-lg-3 col-md-2"></div>
+    <div class="col-lg-6 col-md-8">
+      <h1 *ngIf='!this.editMode'>Nowy post</h1>
+      <h1 *ngIf='this.editMode'>Edytuj post</h1>
+      <hr>
+    </div>
+    <div class="col-lg-3 col-md-2"></div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-2"></div>
+  <div class="col-lg-6 col-md-8">
+      <form class="new-post-form" (ngSubmit)="this.handleSubmit()"  [formGroup]="form">
+
+          <div class="form-group">
+              <label id="title" for="title">
+                Tytuł posta
+                <span *ngIf='this.form.get("title").touched || this.showError'>
+                  {{this.errorMessages.title}}
+              </span>  
+              </label>
+            <input  name="title" type="text" class="form-control" formControlName = "title" autocomplete="off" >
+            
+          </div>
+        
+          <div class="form-group">
+            <label for="content">Treść:
+                <span *ngIf='this.form.get("content").touched || this.showError'>
+                    {{this.errorMessages.description}}
+            </span>  
+            </label>
+            <textarea name="content" id="" cols="30" rows="10" class="form-control" formControlName = "content" autocomplete="off"></textarea>
+          </div>
+        
+          <div class="form-group">
+            <label for="image">Zdjęcie( URL ):
+                <span *ngIf='this.form.get("url").touched || this.showError'>
+                    {{this.errorMessages.url}}
+            </span>  
+            </label>
+            <input name="image" type="text" class="form-control" formControlName = "url" autocomplete="off">
+          </div>
+        
+          <div class="button-group">
+            <button type="submit" class="btn btn-success sendNewPost"  [disabled]="!form.valid">Utwórz</button>
+            <span *ngIf="!form.valid" class="tooltiptext">Uzupełnij poprawnie formularz</span> 
+            <button  type="reset" class="btn btn-danger">Wyczyść</button>
+          
+          </div>
+        
+        </form>
+        
+  </div>
+  <div class="col-lg-3 col-md-2"></div>
+</div>
+</div>

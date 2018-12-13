@@ -1,0 +1,38 @@
+.contactForm{
+    background-color: rgba(255,255,255,0);
+}
+
+.contactForm label{
+    font-size: 20px;
+}
+h1{
+    color:cornsilk;
+}
+.contactForm input,textarea{
+    position:realative;
+    background-color: rgba(255,255,255,0.5);
+    border:none;
+    border-bottom: 2px solid cornsilk;
+    box-shadow: none;
+    border-radius: 0px;
+    font-size: 17px;
+    color: cornsilk;
+    letter-spacing:1px;
+    
+}
+
+.contactForm input:focus,textarea:focus{
+    border-bottom: 2px solid #1873ce;
+    background-color: rgba(255,255,255,0.7);
+    
+}
+
+.contactForm button{
+    width:50%;
+    border-radius:0px;
+}
+
+.contactButtons{
+    width:100%;
+    margin-top:10px;
+}

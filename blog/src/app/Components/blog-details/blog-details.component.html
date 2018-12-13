@@ -1,43 +1,25 @@
 
-<!--<div>
-  <div class="row">
-    <div class="col-lg-3 "></div>
-    <div class="col-lg-6 titleCenter">
-      <h2 class="detailTitle animated fadeIn">{{post.title}}</h2>
-    </div>
-    <div class="col-lg-3"></div>
-  </div>
-  <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6">
-        <img class="blogDetailsImg animated fadeIn" src={{post.url}} />
-    </div>
-    <div class="col-lg-3"></div>
-  </div>
-  <div class="row ">
-    <div class="col-lg-2 "></div>
-    <div class="col-lg-8 blogDetailtitle detailtitle animated fadeIn">
-      <h3 class="">{{post.title}} </h3>
-    </div>
-    <div class="col-lg-2 "></div>
-  </div>
-</div>-->
-
 <div>
+ 
+  <div *ngIf="this.isLoaded" class="loaderContainer" id="loaderContainer">
+    <div class="loader"></div> 
+    <div class="loaderInner"></div>
+    <div class="loaderInnerSmall"></div>
+</div>
 
-  <div class="row">
+  <div class="row blogDetailsRow animated" *ngIf="!this.isLoaded">
 
       <div class="col-lg-6">
           <div class="row">
             <div class="col title-center">
-              <h2 class="detailTitle animated fadeIn">{{post.title}}</h2>
+              <h2 class="detailTitle animated fadeInDown">{{post.title}}</h2>
             </div>
           </div>
     
           <div class="row">
-            <div class="col  blogDetailtitle detailtitle animated fadeIn">
-              <h3 class="">{{post.title}} </h3>
-              -<div class="starDiv">
+            <div class="col blogDetailContent  animated fadeInLeft">
+              <h3>{{post.content}} </h3>
+              <div class="starDiv">
                   <span class="starDivTitle">
                       Oceń:
                   </span>
@@ -53,11 +35,20 @@
           </div>
         </div> 
     <div class="col-lg-6">
-      <img class="blogDetailsImg animated fadeIn" src={{post.url}} />
+      <img class="blogDetailsImg animated fadeInRight" src={{post.url}} />
     </div>
 
-    
-
+   
+   
   </div>
+
+  
+  <div class="row editPostRow animated invisible">
+      <div class="col">
+         <div class="editOverlay">
+             <app-new-post  ></app-new-post>
+         </div>
+      </div>
+    </div>
 
 </div>

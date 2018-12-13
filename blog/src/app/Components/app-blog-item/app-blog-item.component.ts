@@ -14,7 +14,7 @@ import { Component, OnInit ,Input} from '@angular/core';
 export class AppBlogItemComponent implements OnInit {
 
   @Input() title: string;
-  @Input() image: string;
+  @Input() url: string;
   @Input() id: string;
   @Input() delay: number;
   delayValue;

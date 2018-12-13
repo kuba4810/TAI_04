@@ -1,16 +1,16 @@
 
 
-<div class="container-fluid">
+<div class="container-fluid animated fadeInDown">
 <div class="row">
 <div class="col-sm-2 col-md-4 col-lg-3"></div>
 <div class="col-sm-8 col-md-4 col-lg-6">
 
           <form (ngSubmit)="onSubmit()" [formGroup]="form" class="contactForm">
                   <fieldset>
-                          <legend>Uzupełnij dane:</legend>
+                          <legend><h1>Uzupełnij dane</h1></legend>
 
                           <div class="form-group">
-                                  <label for="firstName">*Imię: 
+                                  <label for="firstName">*Imię 
                                         <span *ngIf='this.form.get("firstName").touched || this.showError'>
                                                 {{this.errorMessages.firstName}}
                                         </span>      
@@ -21,7 +21,7 @@
                           </div>
 
                           <div class="form-group">
-                                  <label for="lastName">*Nazwisko:
+                                  <label for="lastName">*Nazwisko
                                                 <span *ngIf='this.form.get("lastName").touched || this.showError'>
                                                         {{this.errorMessages.lastName}}
                                                 </span>
@@ -33,7 +33,7 @@
                           </div>
 
                           <div class="form-group">
-                                  <label for="email">Email:
+                                  <label for="email">*Email
                                    <span *ngIf='this.form.get("email").touched || this.showError'>
                                            {{this.errorMessages.email}}
                                         </span>      
@@ -45,7 +45,7 @@
 
 
 
-                          <label for="gender">Płeć:</label> <br>
+                          <label for="gender">Płeć</label> <br>
                           <div class="checkbox">
                                   <input type="radio" name="gender" value="male" checked> Mężczyzna
                                   <input type="radio" name="gender" value="female"> Kobieta
@@ -54,7 +54,7 @@
 
 
                           <div class="form-group">
-                                  <label for="description">Opis:</label>
+                                  <label for="description">Opis</label>
                                   <textarea  class="form-control" id="" cols="30"
                                           rows="5"></textarea>
                           </div>
@@ -62,8 +62,8 @@
                           <label for="age">Wiek</label>
                           <input type="number" class="form-control" min="18" max="120" value="18">
 
-                          <label for="stan_cywilny">Stan cywilny:</label>
-                          <select  class="form-control" id="">
+                          <label for="stan_cywilny">Stan cywilny</label>
+                          <select  class="form-control select-picker" id="">
                                   <option value="single">Panna/Kawaler</option>
                                   <option value="relationship">W związku</option>
 
@@ -71,8 +71,8 @@
 
 
 
-                          <div class="btn-group">
-                                  <button class="btn btn-danger">Wyczyść</button>
+                          <div class="btn-group contactButtons">
+                                  <button type="reset" class="btn btn-danger">Wyczyść</button>
                                   <button   class="btn btn-success sendFormButton" [disabled]="!form.valid" >Wyślij</button>
                                   <span *ngIf="!form.valid" class="tooltiptext">Uzupełnij poprawnie formularz</span>
                           </div>

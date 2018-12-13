@@ -21,6 +21,9 @@ import {FilterPipe} from './pipes';
 import { BlogHomeComponent } from './Components/blog-home/blog-home.component';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { TextFormatDirective } from './text-format.directive';
+import { NewPostComponent } from './Components/new-post/new-post.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -29,7 +32,10 @@ const appRoutes: Routes = [
      { path: 'quiz', component: QuizComponent },
      { path: 'contact',  component: ContactComponent },
      { path: 'blog',   component: BlogHomeComponent }, 
-     { path: 'blog/details/:id',   component: BlogDetailsComponent }
+     { path: 'blog/details/:id',   component: BlogDetailsComponent },
+     {path: 'blog/new-post',component: NewPostComponent},
+     {path: 'login', component:LoginComponent },
+     {path: 'register' ,component: RegisterComponent}
 ];
 
 @NgModule({
@@ -49,6 +55,9 @@ const appRoutes: Routes = [
     BlogHomeComponent,
     SearchBarComponent,
     TextFormatDirective,
+    NewPostComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [

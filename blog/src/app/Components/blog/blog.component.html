@@ -3,13 +3,16 @@
     <div class="loader"></div> 
     <div class="loaderInner"></div>
     <div class="loaderInnerSmall"></div>
-  </div>
+</div>
   
 <ul class="list-group">
     <li *ngFor="let post of posts | slice: 0:20 | filter:filterText">
-        <div class="col-lg-4 col-md-6">
-            <blog-item id="{{post.id}}" title={{post.title}}  image={{post.url}} delay={{post.id}} ></blog-item>
-        </div> 
+         <div class="col-lg-4 col-md-6 col-sm-10">
+            <blog-item id="{{post.id}}" title={{post.title}}  url={{post.url}} delay={{post.id}} ></blog-item>   
+        </div>
+
+
        
     </li>
 </ul>
+

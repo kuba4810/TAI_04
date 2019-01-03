@@ -13,8 +13,10 @@ function create(context) {
     }
 
     async function authenticate(name, password) {
+        console.log('Dane w Manager: ',name,' ',password)
         let userData;
         const user = await UserDAO.getByEmailOrName(name);
+        console.log("Znaleziony user: ",user);
         if (!user) {
             throw applicationException.new(applicationException.UNAUTHORIZED, 'User with that email does not exist');
         }
@@ -38,9 +40,9 @@ function create(context) {
 
     async function createNewOrUpdate(userData) {
         console.log("Manager: ",userData);
-        userData.activationHash = hashString(Date.now().toString());
-        const user = await UserDAO.createNewOrUpdate(userData);
+        const user =  await UserDAO.createNewOrUpdate(userData);
         console.log("Utworzony user: ", user);
+
         if (userData.password) {
             return await PasswordDAO.createOrUpdate({userId: user.id, password: hashString(userData.password)});
         } else {

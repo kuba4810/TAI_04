@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {UserService} from '../Services/user-service'
+import { log } from 'util';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -7,21 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  registerMessage;
+
+  constructor(private userService: UserService) { 
+    
+  }
 
   ngOnInit() {
   }
+
 
   register(e){
     e.preventDefault();
 
     let data ={
-      login : e.target.login.value,
-      mail : e.target.mail.value,
+      name : e.target.login.value,
+      email : e.target.mail.value,
       password: e.target.password.value
     } 
 
     console.log(data);
     
+    this.userService.createOrUpdate(data).subscribe(result=>{
+      console.log('Odpowiedź z serwera: ',result);
+      let response : any;
+      response = result
+      if(response.userId){
+        this.registerMessage = 'Udało się zarejestrować :D'
+      }
+    });
   }
 }

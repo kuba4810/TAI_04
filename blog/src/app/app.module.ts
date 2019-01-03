@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import {AuthServiceService} from './Services/auth-service.service'
+import {UserService} from './Services/user-service'
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './Components/contact/contact.component';
@@ -70,7 +72,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [DataService],
+  providers: [DataService,AuthServiceService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

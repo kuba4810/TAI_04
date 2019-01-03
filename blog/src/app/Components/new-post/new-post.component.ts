@@ -115,7 +115,8 @@ export class NewPostComponent implements OnInit {
 
     console.log("Dane do serwera: ",data);
 
-   /*  fetch("http://localhost:3000/api/post", {
+   /*  
+   fetch("http://localhost:3000/api/post", {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
@@ -131,7 +132,8 @@ export class NewPostComponent implements OnInit {
           //  this.router.navigate(['/blog']);
       }).catch((err)=>{
         console.log("Błąd: ",err);
-      });  */
+      });  
+  */
 
      
 this.dataService.createPost(data).subscribe(result=>{

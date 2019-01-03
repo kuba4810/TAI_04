@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    // console.log(localStorage.removeItem('userToken'));
+    console.log(localStorage.removeItem('userToken'));
     
     if(localStorage.getItem('userToken')){
       this.router.navigate([`/`]);
@@ -39,7 +39,11 @@ export class LoginComponent implements OnInit {
       if(response.token){
         this.serverResponse = 'Udało się zalogować :D'
         localStorage.setItem('userToken',response.token);
-        this.router.navigate([`/`]);
+        
+        setTimeout(()=>{
+          this.router.navigate([`/`]);
+        },500);
+
       }if(response.statusText === 'Unauthorized'){
         this.serverResponse = 'Nie udało się zalogować :/'
       }

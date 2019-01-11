@@ -2,25 +2,52 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../Services/user-service'
 import {ActivatedRoute, Router} from '@angular/router';
 import { log } from 'util';
+import {AuthService} from '../../Services/auth.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  credentials = {
+    login: '',
+    password: ''
+   };
+   
   serverResponse =''
-  constructor(private userService: UserService,private router: Router) { }
+  constructor(public authService: AuthService,private userService: UserService,private router: Router) { }
 
   ngOnInit() {
 
-    console.log(localStorage.removeItem('userToken'));
+    // console.log(localStorage.removeItem('token'));
     
-    if(localStorage.getItem('userToken')){
+    if(localStorage.getItem('token')){
       this.router.navigate([`/`]);
     }
   }
 
+  signIn() {
+    console.log('Rozpoczynam logowanie ...')
+    console.log('Moje dane to : ',this.credentials);
+    
+    return this.authService.authenticate(this.credentials).subscribe((result) => {
+            console.log('Odpowiedź z logowania: ',result);
+            
+            if (!result) {
+                this.logged = false;
+            } else {
+                this.logout = false;
+                this.credentials = {
+                    login: '',
+                    password: ''
+                };
+                this.router.navigate(['/']);
+            }
+        });
+ }
+ 
+ 
+/* 
   logIn(e){
     this.serverResponse = ''
     e.preventDefault();
@@ -48,5 +75,5 @@ export class LoginComponent implements OnInit {
         this.serverResponse = 'Nie udało się zalogować :/'
       }
     });
-  }
+  } */
 }

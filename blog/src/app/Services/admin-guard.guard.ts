@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-import {AuthServiceService} from './auth-service.service';
+import {Injectable} from '@angular/core';
+import {CanActivate} from '@angular/router';
+import {AuthService} from './auth.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AdminGuardGuard implements CanActivate {
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return true;
-  }
+@Injectable()
+export class AdminGuard implements CanActivate {
+
+   constructor(private authService: AuthService) {
+}
+
+canActivate() {
+   if (this.authService.isLoggedIn()) {
+       return true;
+   }
+}
 }

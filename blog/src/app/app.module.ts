@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS,HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {AuthServiceService} from './Services/auth-service.service'
 import {UserService} from './Services/user-service'
-
+import {AuthService} from './Services/auth.service'
 import { AppComponent } from './app.component';
 import { ContactComponent } from './Components/contact/contact.component';
 import { QuizComponent } from './Components/quiz/quiz.component';
@@ -26,7 +25,7 @@ import { TextFormatDirective } from './text-format.directive';
 import { NewPostComponent } from './Components/new-post/new-post.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+import {AuthInterceptor} from './Services/auth.interceptor';
 
 
 const appRoutes: Routes = [
@@ -72,7 +71,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [DataService,AuthServiceService,UserService],
+  providers: [DataService,AuthService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

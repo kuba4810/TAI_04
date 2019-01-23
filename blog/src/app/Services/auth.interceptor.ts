@@ -20,7 +20,7 @@ intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<an
    const auth = this.injector.get(AuthService);
 request = request.clone({
    setHeaders: {
-       ‘x-auth-token’: `${auth.getToken()}`
+       'x-auth-token': `${auth.getToken()}`
    }
 });
 

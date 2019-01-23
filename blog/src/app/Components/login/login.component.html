@@ -20,20 +20,17 @@
 </form> -->
 
 
-
-<form class="loginForm animated zoomIn" action="post" autocomplete="off" method="POST">
-    <legend>
-        <h2>Zaloguj się</h2>
-      </legend>
-  <div class="form-group">
+<form action="post" autocomplete="off" method="POST">
+  <div class="input-group">
     <input [(ngModel)]="credentials.login" type="text" class="form-control" name="username" placeholder="Nazwa" title="Wprowadź login">
-
-    <input [(ngModel)]="credentials.password" type="password" class="form-control" name="password" placeholder="Hasło"
-      title="Wprowadź hasło">
-
-    <button (click)="signIn()" class="btn btn-lg btn-pink btn-block" type="submit" title="Przycisk zaloguj">
-      Zaloguj
-    </button>
   </div>
 
+  <div class="input-group">
+    <input [(ngModel)]="credentials.password" type="password" class="form-control" name="password" placeholder="Hasło"
+      title="Wprowadź hasło">
+  </div>
+
+  <button (click)="signIn()" class="btn btn-lg btn-pink btn-block" type="submit" title="Przycisk zaloguj">
+    Zaloguj
+  </button>
 </form>
